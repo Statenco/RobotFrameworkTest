@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<keywordspec name="RadiusLibrary" type="library" format="ROBOT" generated="20190109 15:43:53">
+<version></version>
+<scope>test case</scope>
+<namedargs>yes</namedargs>
+<doc>``RadiusLibrary`` is a test library providing keywords for handling the RADIUS protocol.
+This library uses the pyrad package for RADIUS protocol handling.
+Pyrad source code is located at https://github.com/wichert/pyrad. The library supports the creation of RADIUS clients and servers, and supports authentication, accounting and change of authorization requests.
+Multiple client and server sessions can be create through the use the `alias` parameter.
+= Examples =
+== Client ==
+Example of client authentication session:
+| `Create Client`         | server=127.0.0.1 | port=1812 | secret=mysecret |
+| `Create Access Request` |
+| `Add Request Attribute` | User-Name         | subscriber       |
+| `Add Request Attribute` | User-Password     | mypass           |
+| `Add Request Attribute` | Acct-Session-Id   | someid           |
+| `Send Request` |
+| `Receive Access Accept` | timeout=5.0 |
+| `Response Should Contain Attribute` | Framed-IP-Address | 10.0.0.100 |
+
+Example of client accounting session:
+| `Create Client` | server=127.0.0.1 | port=1813 | secret=mysecret |
+| `Create Access Request` |
+| `Create Accounting Request` |
+| `Add Request Attribute` | User-Name         | subscriber       |
+| `Add Request Attribute` | Acct-Session-Id   | someid           |
+| `Add Request Attribute` | Acct-Status-Type  | Start            |
+| `Send Request` |
+| `Receive Accounting Response` |
+
+== Server ==
+Example of server session:
+| `Create Server`          | server=127.0.0.1 | port=1812 | secret=mysecret |
+| `Receive Access Request` |
+| `Request Should Contain Attribute` | User-Name | subscriber |
+| `Request Should Contain Attribute` | User-Password | mypass |
+| `Request Should Contain Attribute` | Acct-Session-Id |
+| `Create Access Accept` |
+| `Add Request Attribute`  | Framed-IP-Address | 10.0.0.100 |
+| `Send Response` |</doc>
+<kw name="Add Request Attribute">
+<arguments>
+<arg>key</arg>
+<arg>value</arg>
+<arg>alias=None</arg>
+</arguments>
+<doc>Adds attribute to the created RADIUS request.
+
+- ``key:``   RADIUS attribute identifier, ie User-Name, Acct-Session-Id.
+- ``value:`` RADIUS attribute value.
+- ``alias:`` alias to identify the client session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Add Response Attribute">
+<arguments>
+<arg>key</arg>
+<arg>value</arg>
+<arg>alias=None</arg>
+</arguments>
+<doc>Adds attribute to the created RADIUS response.
+
+- ``key:``   RADIUS attribute identifier, ie User-Name, Acct-Session-Id.
+- ``value:`` RADIUS attribute value.
+- ``alias:`` alias to identify the client session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Access Accept">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates an access accept response.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Access Reject">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates an access accept.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Access Request">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates an access request.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Accounting Request">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates an accounting request.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Accounting Response">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates an accounting response.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Client">
+<arguments>
+<arg>alias</arg>
+<arg>address</arg>
+<arg>port</arg>
+<arg>secret</arg>
+<arg>raddict=dictionary</arg>
+<arg>authenticator=True</arg>
+</arguments>
+<doc>Create Client: create a RADIUS session to a server.
+
+- ``alias:`` Alias to identify the session to use.
+
+- ``address:`` IP address of the RADIUS server.
+
+- ``port:`` IP port of the RADIUS server.
+
+- ``secret:`` RADIUS secret.
+
+- ``raddict:`` Path to RADIUS dictionary.
+
+- ``authenticator:`` Authenticator boolean switch.
+
+Examples:
+| Create Client | auth_client | 127.0.0.1 | 1812 | mysecret |                     |
+| Create Client | acct_client | 127.0.0.1 | 1813 | mysecret | dictionary=mydict   |
+| Create Client |  coa_client | 127.0.0.1 | 3799 | mysecret | authenticator=False |
+
+The next step after creating a client is to create a request, using the `Create Access Request` keyword for example.
+After creating a client, it is ready to send requests using the `Receive Access Request` keyword for example.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Coa Ack">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates a coa ack response.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Coa Nack">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates a coa nack response.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Coa Request">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates an coa request.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Disconnect Ack">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates a disconnect ack response.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Disconnect Nack">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates a disconnect nack response.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Disconnect Request">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Creates a disconnect request.
+
+- ``alias:`` alias to identify the session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Create Server">
+<arguments>
+<arg>alias=None</arg>
+<arg>address=127.0.0.1</arg>
+<arg>port=0</arg>
+<arg>secret=secret</arg>
+<arg>raddict=dictionary</arg>
+</arguments>
+<doc>Creates a RADIUS server.
+
+- ``alias:`` Alias to identify the servr session to use.
+
+- ``address:`` IP address of the RADIUS server.
+
+- ``port:`` IP port of the RADIUS server.
+
+- ``secret:`` RADIUS secret.
+
+- ``raddict:`` Path to RADIUS dictionary.
+
+Examples:
+| Create Server | auth_server | 127.0.0.1 | 1812 | mysecret |                     |
+| Create Server | acct_server | 127.0.0.1 | 1813 | mysecret | dictionary=mydict   |
+| Create Server |  coa_server | 127.0.0.1 | 3799 | mysecret |                     |
+
+After creating a server it is ready to receive requests using the `Receive Access Request` keyword for example.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Receive Access Accept">
+<arguments>
+<arg>alias=None</arg>
+<arg>timeout=10.0</arg>
+</arguments>
+<doc>Receives an access accept.
+
+- ``alias:`` alias to identify the session to use.
+- ``timeout:`` Sets receive timeout in seconds(float).</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Receive Access Reject">
+<arguments>
+<arg>alias=None</arg>
+<arg>timeout=10.0</arg>
+</arguments>
+<doc>Receives an access reject.
+
+- ``alias:`` alias to identify the session to use.
+- ``timeout:`` Sets receive timeout in seconds(float).</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Receive Access Request">
+<arguments>
+<arg>alias=None</arg>
+<arg>timeout=10.0</arg>
+</arguments>
+<doc>Receives an access request.
+
+- ``alias:`` alias to identify the session to use.
+- ``timeout:`` Sets receive timeout in seconds(float).</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Receive Accounting Request">
+<arguments>
+<arg>alias=None</arg>
+<arg>timeout=10.0</arg>
+</arguments>
+<doc>Receives an accounting request.
+
+- ``alias:`` alias to identify the session to use.
+- ``timeout:`` Sets receive timeout in seconds(float).</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Receive Accounting Response">
+<arguments>
+<arg>alias=None</arg>
+<arg>timeout=10.0</arg>
+</arguments>
+<doc>Receives an accounting response.
+
+- ``alias:`` alias to identify the session to use.
+- ``timeout:`` Sets receive timeout in seconds(float).</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Receive Coa Ack">
+<arguments>
+<arg>alias=None</arg>
+<arg>timeout=10.0</arg>
+</arguments>
+<doc>Receives a coa ack response.
+
+- ``alias:`` alias to identify the session to use.
+- ``timeout:`` Sets receive timeout in seconds(float).</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Receive Coa Nack">
+<arguments>
+<arg>alias=None</arg>
+<arg>timeout=10.0</arg>
+</arguments>
+<doc>Receives a coa nack response.
+
+- ``alias:`` alias to identify the session to use.
+- ``timeout:`` Sets receive timeout in seconds(float).</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Receive Coa Request">
+<arguments>
+<arg>alias=None</arg>
+<arg>timeout=10.0</arg>
+</arguments>
+<doc>Receives a coa request.
+
+- ``alias:`` alias to identify the session to use.
+- ``timeout:`` Sets receive timeout in seconds(float).</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Receive Disconnect Request">
+<arguments>
+<arg>alias=None</arg>
+<arg>timeout=10.0</arg>
+</arguments>
+<doc>Receives a disconnect request.
+
+- ``alias:`` alias to identify the session to use.
+- ``timeout:`` Sets receive timeout in seconds(float).</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Request Should Contain Attribute">
+<arguments>
+<arg>key</arg>
+<arg>val=None</arg>
+<arg>alias=None</arg>
+</arguments>
+<doc>Checks RADIUS request if specified `key`, or `key value` exists.
+
+If not, An error will be raised.
+
+- ``key:``   RADIUS attribute identifier, ie Framed-IP-Address.
+- ``value:`` RADIUS attribute value.
+- ``key:`` Alias to identify the servr session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Response Should Contain Attribute">
+<arguments>
+<arg>key</arg>
+<arg>val=None</arg>
+<arg>alias=None</arg>
+</arguments>
+<doc>Checks RADIUS response  if specified `key`, or `key value` exists.
+
+If not, An error will be raised.
+
+- ``key:``   RADIUS attribute identifier, ie Framed-IP-Address.
+- ``value:`` RADIUS attribute value.
+- ``key:`` Alias to identify the servr session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Send Request">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Sends RADIUS client request using session specified by `alias`.
+
+- ``key:``   RADIUS attribute identifier, ie User-Name, Acct-Session-Id.
+- ``value:`` RADIUS attribute value.
+- ``alias:`` alias to identify the client session to use.</doc>
+<tags>
+</tags>
+</kw>
+<kw name="Send Response">
+<arguments>
+<arg>alias=None</arg>
+</arguments>
+<doc>Sends RADIUS server resoponse using session specified by `alias`.
+
+- ``alias:`` alias to identify the client session to use.</doc>
+<tags>
+</tags>
+</kw>
+</keywordspec>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.7.1 on win32)" generated="20190114 17:24:55.982" rpa="false">
+<suite id="s1" name="SprintTest" source="C:\Users\dragos\RobotFrameworkTestsWork\SprintTest">
+<suite id="s1-s1" name="Mmm" source="C:\Users\dragos\RobotFrameworkTestsWork\SprintTest\mmm.robot">
+<test id="s1-s1-t1" name="Login to server and perform a command">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>*** Login the host ***</arg>
+</arguments>
+<msg timestamp="20190115 13:21:39.865" level="INFO">*** Login the host ***</msg>
+<status status="PASS" starttime="20190115 13:21:39.865" endtime="20190115 13:21:39.866"></status>
+</kw>
+<kw name="AAA - Login and check aaa status">
+<arguments>
+<arg>${coreOamIP}</arg>
+<arg>${coreOamLogin}</arg>
+<arg>${coreOamPassword}</arg>
+</arguments>
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${input_ip}</arg>
+<arg>alias=lnxphAAA-lnxphoam11</arg>
+</arguments>
+<status status="PASS" starttime="20190115 13:21:39.868" endtime="20190115 13:21:39.868"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${input_login}</arg>
+<arg>${input_password}</arg>
+</arguments>
+<msg timestamp="20190115 13:21:39.869" level="INFO">Logging into '135.1.172.61:22' as 'root'.</msg>
+<msg timestamp="20190115 13:21:42.682" level="INFO">Read output: Could not chdir to home directory /tmp/vcm/config/userhome/(null): No such file or directory
+-------------------------------------------------------------------------------
+HPE Virtual Connect Management CLI v4.62
+Build: 4.62-10 (r325578) Jan 26 2018 00:33:42
+(C) Copyright 2006-2018 Hewlett Packard Enterprise Development LP
+All Rights Reserved
+-------------------------------------------------------------------------------
+
+
+GETTING STARTED: 
+
+help           : Displays a list of available subcommands 
+exit           : Quits the command shell 
+&lt;subcommand&gt; ? : Displays a list of managed elements for a subcommand 
+&lt;subcommand&gt; &lt;managed element&gt; ? : Displays detailed help for a command 
+
+-&gt;</msg>
+<status status="PASS" starttime="20190115 13:21:39.869" endtime="20190115 13:21:42.682"></status>
+</kw>
+<kw name="Get File" library="SSHLibrary">
+<doc>Downloads file(s) from the remote machine to the local machine.</doc>
+<arguments>
+<arg>/usr/local/netzwert/AAA/log/*.log</arg>
+<arg>C:${/}Users${/}dragos${/}RobotFrameworkTestsWork${/}SprintTask${/}logs</arg>
+</arguments>
+<msg timestamp="20190115 13:21:43.325" level="FAIL">SFTPError: Garbage packet received</msg>
+<status status="FAIL" starttime="20190115 13:21:42.683" endtime="20190115 13:21:43.325"></status>
+</kw>
+<status status="FAIL" starttime="20190115 13:21:39.867" endtime="20190115 13:21:43.326"></status>
+</kw>
+<status status="FAIL" starttime="20190115 13:21:39.864" endtime="20190115 13:21:43.327" critical="yes">SFTPError: Garbage packet received</status>
+</test>
+<status status="FAIL" starttime="20190115 13:21:39.352" endtime="20190115 13:21:43.328"></status>
+</suite>
+<status status="FAIL" starttime="20190115 13:21:39.314" endtime="20190115 13:21:43.331"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1">Critical Tests</stat>
+<stat pass="0" fail="1">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" id="s1" name="SprintTest">SprintTest</stat>
+<stat pass="0" fail="1" id="s1-s1" name="Mmm">SprintTest.Mmm</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1a1 (Python 3.7.2 on win32)" generated="20190118 13:17:52.361" rpa="true">
+<suite id="s1" name="SprintTask" source="C:\Users\dragos\RobotFrameworkTestsWork\SprintTask">
+<suite id="s1-s1" name="SprintTask" source="C:\Users\dragos\RobotFrameworkTestsWork\SprintTask\SprintTask.robot">
+<test id="s1-s1-t1" name="Login and get logs">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>----Logging in----</arg>
+</arguments>
+<msg timestamp="20190118 13:17:53.100" level="INFO">----Logging in----</msg>
+<status status="PASS" starttime="20190118 13:17:53.099" endtime="20190118 13:17:53.100"></status>
+</kw>
+<kw name="AAA - Login the server">
+<arguments>
+<arg>${oamip}</arg>
+<arg>${id}</arg>
+<arg>${pass}</arg>
+</arguments>
+<kw name="Open Connection" library="SSHLibrary">
+<doc>Opens a new SSH connection to the given ``host`` and ``port``.</doc>
+<arguments>
+<arg>${input_ip}</arg>
+<arg>alias=lnxphAAA-lnxphoam11</arg>
+</arguments>
+<status status="PASS" starttime="20190118 13:17:53.101" endtime="20190118 13:17:53.101"></status>
+</kw>
+<kw name="Login" library="SSHLibrary">
+<doc>Logs into the SSH server with the given ``username`` and ``password``.</doc>
+<arguments>
+<arg>${input_login}</arg>
+<arg>${input_password}</arg>
+</arguments>
+<msg timestamp="20190118 13:17:53.102" level="INFO">Logging into '135.1.172.69:22' as 'root'.</msg>
+<msg timestamp="20190118 13:17:55.976" level="INFO">Read output: Last login: Fri Jan 18 11:14:44 2019 from n-20hepf136gje.ro.alcatel-lucent.com
+Only restricted access to this system is allowed.
+
+All activities on this system are monitored.
+If you should observe irregularities, forward
+them to the appropriate units so that further
+measures can be taken.
+
+By continuing activities on this system,
+you accept these rules.
+
+[root@lnxphAAA-lnxphoam11 ~]$</msg>
+<status status="PASS" starttime="20190118 13:17:53.101" endtime="20190118 13:17:55.976"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10s</arg>
+</arguments>
+<msg timestamp="20190118 13:18:05.979" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20190118 13:17:55.976" endtime="20190118 13:18:05.979"></status>
+</kw>
+<kw name="Write Bare" library="SSHLibrary">
+<doc>Writes the given ``text`` on the remote machine without appending a newline.</doc>
+<arguments>
+<arg>/usr/local/netzwert/AAA/bin/ta-cli</arg>
+</arguments>
+<status status="PASS" starttime="20190118 13:18:05.979" endtime="20190118 13:18:05.980"></status>
+</kw>
+<kw name="Write Bare" library="SSHLibrary">
+<doc>Writes the given ``text`` on the remote machine without appending a newline.</doc>
+<arguments>
+<arg>./ta-cli</arg>
+</arguments>
+<status status="PASS" starttime="20190118 13:18:05.980" endtime="20190118 13:18:05.981"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10s</arg>
+</arguments>
+<msg timestamp="20190118 13:18:15.982" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20190118 13:18:05.981" endtime="20190118 13:18:15.982"></status>
+</kw>
+<kw name="Write Bare" library="SSHLibrary">
+<doc>Writes the given ``text`` on the remote machine without appending a newline.</doc>
+<arguments>
+<arg>netzwert</arg>
+</arguments>
+<status status="PASS" starttime="20190118 13:18:15.982" endtime="20190118 13:18:15.983"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3s</arg>
+</arguments>
+<msg timestamp="20190118 13:18:18.984" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20190118 13:18:15.983" endtime="20190118 13:18:18.984"></status>
+</kw>
+<kw name="Write Bare" library="SSHLibrary">
+<doc>Writes the given ``text`` on the remote machine without appending a newline.</doc>
+<arguments>
+<arg>netzwert</arg>
+</arguments>
+<status status="PASS" starttime="20190118 13:18:18.984" endtime="20190118 13:18:18.985"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>10s</arg>
+</arguments>
+<msg timestamp="20190118 13:18:28.987" level="INFO">Slept 10 seconds</msg>
+<status status="PASS" starttime="20190118 13:18:18.986" endtime="20190118 13:18:28.988"></status>
+</kw>
+<kw name="Write Bare" library="SSHLibrary">
+<doc>Writes the given ``text`` on the remote machine without appending a newline.</doc>
+<arguments>
+<arg>checkout</arg>
+</arguments>
+<status status="PASS" starttime="20190118 13:18:28.988" endtime="20190118 13:18:28.989"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190118 13:18:33.990" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190118 13:18:28.989" endtime="20190118 13:18:33.990"></status>
+</kw>
+<kw name="Write Bare" library="SSHLibrary">
+<doc>Writes the given ``text`` on the remote machine without appending a newline.</doc>
+<arguments>
+<arg>config</arg>
+</arguments>
+<status status="PASS" starttime="20190118 13:18:33.991" endtime="20190118 13:18:33.991"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190118 13:18:38.994" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190118 13:18:33.992" endtime="20190118 13:18:38.994"></status>
+</kw>
+<kw name="Write Bare" library="SSHLibrary">
+<doc>Writes the given ``text`` on the remote machine without appending a newline.</doc>
+<arguments>
+<arg>active</arg>
+</arguments>
+<status status="PASS" starttime="20190118 13:18:38.995" endtime="20190118 13:18:38.996"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190118 13:18:43.997" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190118 13:18:38.996" endtime="20190118 13:18:43.997"></status>
+</kw>
+<kw name="Write Bare" library="SSHLibrary">
+<doc>Writes the given ``text`` on the remote machine without appending a newline.</doc>
+<arguments>
+<arg>Autoconfig39.cfg</arg>
+</arguments>
+<status status="PASS" starttime="20190118 13:18:43.997" endtime="20190118 13:18:43.999"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>5s</arg>
+</arguments>
+<msg timestamp="20190118 13:18:49.000" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20190118 13:18:43.999" endtime="20190118 13:18:49.000"></status>
+</kw>
+<kw name="Get File" library="SSHLibrary">
+<doc>Downloads file(s) from the remote machine to the local machine.</doc>
+<arguments>
+<arg>/root/Autoconfig39.cfg</arg>
+<arg>C:${/}Users${/}dragos${/}RobotFrameworkTestsWork${/}SprintTask${/}config${/}</arg>
+</arguments>
+<msg timestamp="20190118 13:18:49.449" level="INFO">[chan 1] Opened sftp connection (server version 3)</msg>
+<msg timestamp="20190118 13:18:56.439" level="INFO">'/root/Autoconfig39.cfg' -&gt; 'C:\Users\dragos\RobotFrameworkTestsWork\SprintTask\config\Autoconfig39.cfg'</msg>
+<status status="PASS" starttime="20190118 13:18:49.001" endtime="20190118 13:18:56.440"></status>
+</kw>
+<status status="PASS" starttime="20190118 13:17:53.100" endtime="20190118 13:18:56.440"></status>
+</kw>
+<status status="PASS" starttime="20190118 13:17:53.098" endtime="20190118 13:18:56.441" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20190118 13:17:52.461" endtime="20190118 13:18:56.442"></status>
+</suite>
+<status status="PASS" starttime="20190118 13:17:52.434" endtime="20190118 13:18:56.444"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tasks</stat>
+<stat pass="1" fail="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="SprintTask">SprintTask</stat>
+<stat pass="1" fail="0" id="s1-s1" name="SprintTask">SprintTask.SprintTask</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

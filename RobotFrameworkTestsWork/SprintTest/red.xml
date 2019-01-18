@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<projectConfiguration>
+    <configVersion>2</configVersion>
+    <relativeTo>WORKSPACE</relativeTo>
+    <referencedLibrary type="PYTHON" name="Selenium2Library" path="C:/Users/dragos/AppData/Roaming/Python/Python37/site-packages"/>
+    <referencedLibrary type="PYTHON" name="SSHLibrary" path="C:/Python37/Lib/site-packages"/>
+    <referencedLibrary type="PYTHON" name="REST" path="C:/Python37/Lib/site-packages"/>
+    <referencedLibrary type="PYTHON" name="RadiusLibrary" path="C:/Python37/Lib/site-packages"/>
+    <referencedLibrary type="PYTHON" name="RequestsLibrary" path="C:/Python37/Lib/site-packages"/>
+    <pythonpath/>
+    <classpath/>
+    <excludedForValidation/>
+    <isValidatedFileSizeCheckingEnabled>true</isValidatedFileSizeCheckingEnabled>
+    <validatedFileMaxSize>1024</validatedFileMaxSize>
+    <isReferencedLibrariesAutoReloadEnabled>true</isReferencedLibrariesAutoReloadEnabled>
+    <isReferencedLibrariesAutoDiscoveringEnabled>true</isReferencedLibrariesAutoDiscoveringEnabled>
+    <isLibrariesAutoDiscoveringSummaryWindowEnabled>false</isLibrariesAutoDiscoveringSummaryWindowEnabled>
+</projectConfiguration>
